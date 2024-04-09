@@ -4,7 +4,7 @@
 This project was a key part of my academic curriculum, aimed at familiarizing myself with various network concepts crucial for developers and project managers. The project involved setting up a comprehensive configuration of a server along with a set of clients, all modeled using virtual machines (VMs).
 
 ## Objectives
-The primary goal was to establish an architecture similar to the one illustrated in the provided image. This involved implementing the following functionalities:
+The primary goal was to establish an architecture similar to the one illustrated in [diagram] (./doc/) This involved implementing the following functionalities:
 
 ### Server and Client Setup
 - **DHCP**: Automated IP assignment for machines in PV1 and PV2.
