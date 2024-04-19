@@ -9,3 +9,5 @@ nmcli con mod PV1 ipv4.method manual
 nmcli con add type ethernet con-name PV2 ifname enp0s9 ip4 192.168.2.1/24 gw4 192.168.2.1
 nmcli con mod PV2 ipv4.method manual
 
+ip addr show
+
