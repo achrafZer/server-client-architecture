@@ -59,3 +59,5 @@ echo "$CONFIG_CONTENT" > /etc/dhcp/dhcpd.conf
 # Afficher un message de succès
 echo "La configuration DHCP a été mise à jour avec succès."
 
+systemctl start dhcpd
+systemctl enable dhcpd
