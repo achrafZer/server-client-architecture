@@ -61,3 +61,28 @@ echo "La configuration DHCP a été mise à jour avec succès."
 
 systemctl start dhcpd
 systemctl enable dhcpd
+
+
+# Définir SRV comme routeur par défaut
+echo "net.ipv4.ip\_forward = 1" >> /etc/sysctl.conf
+systemctl stop firewalld
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
