@@ -11,3 +11,51 @@ nmcli con mod PV2 ipv4.method manual
 
 ip addr show
 
+#DHCP
+
+dnf -y install dhcp-server
+
+#!/bin/bash
+
+# Contenu à ajouter à dhcpd.conf
+#!/bin/bash
+
+# Contenu à ajouter à dhcpd.conf
+CONFIG_CONTENT=$(cat <<'EOF'
+subnet 192.168.1.0 netmask 255.255.255.0 {
+    range 192.168.1.10 192.168.1.100;
+    option domain-name-servers 192.168.1.1;
+    option domain-name "id1.fr";
+    option subnet-mask 255.255.255.0;
+    option routers 192.168.1.1;
+    default-lease-time 600;
+    max-lease-time 7200;
+}
+
+subnet 192.168.2.0 netmask 255.255.255.0 {
+    range 192.168.2.10 192.168.2.100;
+    option domain-name-servers 192.168.2.1;
+    option domain-name "id1.fr";
+    option subnet-mask 255.255.255.0;
+    option routers 192.168.2.1;
+    default-lease-time 600;
+    max-lease-time 7200;
+}
+EOF
+)
+
+# Vérification des privilèges de l'utilisateur
+if [[ $EUID -ne 0 ]]; then
+    echo "Ce script doit être exécuté en tant que root."
+    exit 1
+fi
+
+# Sauvegarde de l'ancien fichier de configuration
+cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.backup
+
+# Écriture du nouveau contenu dans le fichier de configuration DHCP
+echo "$CONFIG_CONTENT" > /etc/dhcp/dhcpd.conf
+
+# Afficher un message de succès
+echo "La configuration DHCP a été mise à jour avec succès."
+
