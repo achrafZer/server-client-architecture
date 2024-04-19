@@ -66,7 +66,12 @@ systemctl enable dhcpd
 # Définir SRV comme routeur par défaut
 echo "net.ipv4.ip\_forward = 1" >> /etc/sysctl.conf
 systemctl stop firewalld
+systemctl disable firewalld
+dnf -y install iptables-services
 
+systemctl enable iptables
+sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+/usr/libexec/iptables/iptables.init save
 
 
 
